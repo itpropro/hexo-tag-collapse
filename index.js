@@ -1,11 +1,15 @@
-hexo.extend.tag.register('collapse', function(args, content){
+'use strict';
+
+hexo.extend.tag.register('collapse', collapse, {ends: true});
+
+function collapse(args, content) {
   var title = args[0];
   return `<style>
           .collapsible {
             background-color: #777;
             color: white;
             cursor: pointer;
-            padding: 18px;
+            padding: 20px;
             width: 100%;
             border: none;
             text-align: left;
@@ -18,7 +22,7 @@ hexo.extend.tag.register('collapse', function(args, content){
           }
           
           .collapsible:after {
-            content: '\002B';
+            content: '\\002B';
             color: white;
             font-weight: bold;
             float: right;
@@ -26,7 +30,7 @@ hexo.extend.tag.register('collapse', function(args, content){
           }
           
           .active:after {
-            content: "\2212";
+            content: "\\2212";
           }
           
           .content {
@@ -36,7 +40,16 @@ hexo.extend.tag.register('collapse', function(args, content){
             transition: max-height 0.2s ease-out;
             background-color: #f1f1f1;
           }
+          
+          .collapsetext {
+            margin: 0 0 0 0 !important;
+          }
+          
           </style>
+          <button class="collapsible">${title}</button>
+          <div class="content">
+            <p>${hexo.render.renderSync({text: content, engine: 'markdown'}).split('\n').join('')}</p>
+          </div>
           <script>
           var coll = document.getElementsByClassName("collapsible");
           var i;
@@ -52,9 +65,5 @@ hexo.extend.tag.register('collapse', function(args, content){
               } 
             });
           }
-          </script>
-          <button class="collapsible">${title}</button>
-          <div class="content">
-            <p>${content}</p>
-          </div>`;
-}, {ends: true});
+          </script>`;
+}
