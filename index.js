@@ -57,4 +57,4 @@ hexo.extend.tag.register('collapse', function(args, content){
           <div class="content">
             <p>${content}</p>
           </div>`;
-});
+}, {ends: true});
