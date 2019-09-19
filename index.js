@@ -36,6 +36,8 @@ function collapse(args, content) {
   return `${style}
           <details>
             <summary>${title}</summary>
-            <p style="padding: 10px">${hexo.render.renderSync({text: content, engine: 'markdown'}).split('\n').join('')}</p>
+            <div style="padding: 0 18px">
+            <p>${hexo.render.renderSync({text: content, engine: 'markdown'}).split('\n').join('')}</p>
+            </div>
           </details>`;
 }
