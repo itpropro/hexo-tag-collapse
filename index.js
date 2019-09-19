@@ -7,10 +7,10 @@ function collapse(args, content) {
   var style = `
   <style>
   summary {
-    background-color: #777;
+    background-color: #666;
     color: white;
     padding: 10px;
-    width: 100%;
+    max-width: 100%;
     text-align: left;
     padding: 10px 10px;
   }
@@ -26,7 +26,6 @@ function collapse(args, content) {
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
-    margin: -5px 10px 0 0;
   }
   details[open] summary:after {
     content: "\\2212";
